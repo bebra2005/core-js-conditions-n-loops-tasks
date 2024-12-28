@@ -21,8 +21,8 @@
  *  0  => true
  *  -5 => false
  */
-function isPositive(/* number */) {
-  throw new Error('Not implemented');
+function isPositive(number) {
+  return true ? number >= 0 : number < 0;
 }
 
 /**
@@ -38,8 +38,15 @@ function isPositive(/* number */) {
  *  -5, 0, 5      => 5
  *  -0.1, 0, 0.2  => 0.2
  */
-function getMaxNumber(/* a, b, c */) {
-  throw new Error('Not implemented');
+function getMaxNumber(a, b, c) {
+  let max = a;
+  if (b > max) {
+    max = b;
+  }
+  if (c > max) {
+    max = c;
+  }
+  return max;
 }
 
 /**
@@ -60,8 +67,18 @@ function getMaxNumber(/* a, b, c */) {
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  */
-function canQueenCaptureKing(/* queen, king */) {
-  throw new Error('Not implemented');
+function canQueenCaptureKing(queen, king) {
+  let res = false;
+  if (queen.x === king.x) {
+    res = true;
+  }
+  if (queen.y === king.y) {
+    res = true;
+  }
+  if (Math.abs(queen.x - king.x) === Math.abs(queen.y - king.y)) {
+    res = true;
+  }
+  return res;
 }
 
 /**
@@ -82,8 +99,20 @@ function canQueenCaptureKing(/* queen, king */) {
  *  2, 2, 5   => false
  *  3, 0, 3   => false
  */
-function isIsoscelesTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isIsoscelesTriangle(a, b, c) {
+  let res = false;
+  if (a + b > c && a + c > b && c + b > a) {
+    if (a === b) {
+      res = true;
+    }
+    if (a === c) {
+      res = true;
+    }
+    if (c === b) {
+      res = true;
+    }
+  }
+  return res;
 }
 
 /**
@@ -100,8 +129,23 @@ function isIsoscelesTriangle(/* a, b, c */) {
  *  10  => X
  *  26  => XXVI
  */
-function convertToRomanNumerals(/* num */) {
-  throw new Error('Not implemented');
+function convertToRomanNumerals(num) {
+  let res = '';
+  let copy = num;
+  const symbols = [
+    { value: 10, symbol: 'X' },
+    { value: 9, symbol: 'IX' },
+    { value: 5, symbol: 'V' },
+    { value: 4, symbol: 'IV' },
+    { value: 1, symbol: 'I' },
+  ];
+  for (let i = 0; i < symbols.length; i += 1) {
+    while (copy >= symbols[i].value) {
+      res += symbols[i].symbol;
+      copy -= symbols[i].value;
+    }
+  }
+  return res;
 }
 
 /**
